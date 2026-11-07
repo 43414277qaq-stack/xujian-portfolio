@@ -11,44 +11,49 @@
 <meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet" />
 <style>
   /* =========================================================
-     替换提示：姓名「徐剑」、联系方式、作品标题/描述均可替换。
-     图片占位为渐变块，可改成 <div class="thumb-img" style="background:url(你的图.jpg)"></div>
-     站点网址已设为 https://www.XUJIANzpj.com（如需真实可访问，需自行购买域名并部署）。
+     徐剑 · AI 视觉创作作品集
      ========================================================= */
   :root{
-    --bg:#e9e6e0;
-    --surface:#ffffff;
-    --ink:#1b1a18;
-    --muted:#8d8a83;
-    --line:#e0ddd6;
-    --accent:#e2553d;
-    --accent-soft:#f6e3de;
-    --radius:16px;
-    --shadow:0 18px 44px rgba(28,27,26,.10);
+    --bg:#141210;
+    --surface:#1d1a17;
+    --ink:#f4f1ec;
+    --muted:#9a938a;
+    --line:#2c2823;
+    --accent:#e07a3f;
+    --accent-soft:#2a2017;
+    --radius:14px;
+    --shadow:0 18px 44px rgba(0,0,0,.45);
     --maxw:1100px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
-    font-family:"Inter","Space Grotesk",system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
-    background:var(--bg);color:var(--ink);line-height:1.6;
+    font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.7;
     -webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:default;
+    counter-reset:sec;
   }
-  h1,h2,h3,.display{font-family:"Space Grotesk","Inter",system-ui,sans-serif;letter-spacing:-.01em}
+  /* 极淡噪点纹理，打破深色的「死黑」，增加质感 */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background-image:radial-gradient(rgba(244,241,236,.022) 1px, transparent 1px);
+    background-size:3px 3px;mix-blend-mode:overlay;
+  }
+  h1,h2,h3,.display{font-family:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif;letter-spacing:.01em;font-weight:600}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
-  /* ---------- 背景装饰：压灰 + 多团柔光，无限不重复动效 ---------- */
+  /* ---------- 背景装饰：压暗 + 少量低饱和柔光，无限不重复动效 ---------- */
   .bg-deco{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
-  .bg-deco span{position:absolute;border-radius:50%;filter:blur(80px);opacity:.38}
-  .bg-deco .b1{width:460px;height:460px;background:#e8b9a8;top:-120px;left:-100px;animation:float1 19s ease-in-out infinite}
-  .bg-deco .b2{width:420px;height:420px;background:#a9c4dd;bottom:-130px;right:-90px;animation:float2 27s ease-in-out infinite}
-  .bg-deco .b3{width:340px;height:340px;background:#d8c2e6;top:38%;left:52%;opacity:.3;animation:float3 23s ease-in-out infinite}
-  .bg-deco .b4{width:300px;height:300px;background:#bfe0d2;top:12%;right:14%;opacity:.28;animation:float2 31s ease-in-out infinite}
-  .bg-deco .b5{width:260px;height:260px;background:#e9d3a6;bottom:18%;left:8%;opacity:.26;animation:float1 17s ease-in-out infinite}
+  .bg-deco span{position:absolute;border-radius:50%;filter:blur(90px);opacity:.14}
+  .bg-deco .b1{width:460px;height:460px;background:#3a2a1e;top:-120px;left:-100px;animation:float1 19s ease-in-out infinite}
+  .bg-deco .b2{width:420px;height:420px;background:#1e2a33;bottom:-130px;right:-90px;animation:float2 27s ease-in-out infinite}
+  .bg-deco .b3{width:340px;height:340px;background:#2a2030;top:38%;left:52%;opacity:.10;animation:float3 23s ease-in-out infinite}
+  .bg-deco .b4{width:300px;height:300px;background:#20302a;top:12%;right:14%;opacity:.09;animation:float2 31s ease-in-out infinite}
+  .bg-deco .b5{width:260px;height:260px;background:#33281c;bottom:18%;left:8%;opacity:.09;animation:float1 17s ease-in-out infinite}
   @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,42px)}}
   @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-60px,-44px)}}
   @keyframes float3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(46px,-54px) scale(1.12)}}
@@ -67,23 +72,23 @@
   }
   /* 缓慢旋转的虚线同心轨道环 */
   .bg-orbit{position:fixed;top:50%;left:50%;width:64vmax;height:64vmax;margin:-32vmax 0 0 -32vmax;
-    border:1px dashed rgba(226,85,61,.08);border-radius:50%;z-index:-2;pointer-events:none;
+    border:1px dashed rgba(224,122,63,.10);border-radius:50%;z-index:-2;pointer-events:none;
     animation:spin 100s linear infinite}
-  .bg-orbit::before{content:"";position:absolute;inset:16%;border:1px solid rgba(27,26,24,.06);border-radius:50%;
+  .bg-orbit::before{content:"";position:absolute;inset:16%;border:1px solid rgba(244,241,236,.05);border-radius:50%;
     animation:spinr 140s linear infinite}
-  .bg-orbit::after{content:"";position:absolute;inset:33%;border:1px dotted rgba(226,85,61,.07);border-radius:50%}
+  .bg-orbit::after{content:"";position:absolute;inset:33%;border:1px dotted rgba(224,122,63,.09);border-radius:50%}
   .bg-orbit .orb-dot{position:absolute;top:-4px;left:50%;width:8px;height:8px;border-radius:50%;background:var(--accent);opacity:.5;
-    transform:translateX(-50%);box-shadow:0 0 14px rgba(226,85,61,.5)}
+    transform:translateX(-50%);box-shadow:0 0 14px rgba(224,122,63,.5)}
   /* 横向流动光带（无缝循环） */
   .bg-band{position:fixed;top:34%;left:0;width:100%;height:220px;z-index:-2;pointer-events:none;
-    background:linear-gradient(90deg,transparent 0%,rgba(226,85,61,.045) 22%,transparent 46%,rgba(169,196,221,.05) 70%,transparent 100%);
+    background:linear-gradient(90deg,transparent 0%,rgba(224,122,63,.04) 22%,transparent 46%,rgba(154,147,138,.03) 70%,transparent 100%);
     background-size:220% 100%;filter:blur(2px);animation:band 34s linear infinite}
   @keyframes band{0%{background-position:0% 0}100%{background-position:220% 0}}
 
   /* ---------- 鼠标跟随微光 + 水波纹（直径约 1cm） ---------- */
   .cursor-glow{position:fixed;left:0;top:0;width:300px;height:300px;margin:-150px 0 0 -150px;border-radius:50%;pointer-events:none;z-index:-1;opacity:0;transition:opacity .35s;
-    background:radial-gradient(circle, rgba(226,85,61,.12) 0%, rgba(226,85,61,.05) 38%, transparent 70%)}
-  .ripple-fx{position:fixed;width:12px;height:12px;border-radius:50%;border:1.5px solid rgba(226,85,61,.5);pointer-events:none;z-index:300;transform:translate(-50%,-50%) scale(0);animation:ripple .5s ease-out forwards}
+    background:radial-gradient(circle, rgba(224,122,63,.10) 0%, rgba(224,122,63,.04) 38%, transparent 70%)}
+  .ripple-fx{position:fixed;width:12px;height:12px;border-radius:50%;border:1.5px solid rgba(224,122,63,.5);pointer-events:none;z-index:300;transform:translate(-50%,-50%) scale(0);animation:ripple .5s ease-out forwards}
   @keyframes ripple{from{opacity:.55;transform:translate(-50%,-50%) scale(0)}to{opacity:0;transform:translate(-50%,-50%) scale(3.2)}}
 
   /* ---------- 滚动渐显 ---------- */
@@ -91,10 +96,10 @@
   .reveal.in{opacity:1;transform:none}
 
   /* ---------- Nav ---------- */
-  header.nav{position:sticky;top:0;z-index:50;background:rgba(233,230,224,.78);backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line)}
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(20,18,16,.72);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--line)}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .brand{display:flex;align-items:center;gap:10px;font-family:"Space Grotesk";font-weight:700;font-size:18px}
-  .brand .mono{width:30px;height:30px;border-radius:8px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:"Noto Serif SC","Songti SC","SimSun",serif;font-weight:700;font-size:18px}
+  .brand .mono{width:30px;height:30px;border-radius:8px;background:var(--accent);color:#141210;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700}
   .brand span{color:var(--accent)}
   .nav-links{display:flex;gap:28px;align-items:center}
   .nav-links a{font-size:14px;color:var(--muted);transition:color .2s}
@@ -105,62 +110,105 @@
   .burger span{width:22px;height:2px;background:var(--ink);border-radius:2px}
 
   /* ---------- Hero ---------- */
-  .hero{padding:120px 0 90px;position:relative}
-  .hero .eyebrow{display:inline-block;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:18px}
-  .hero h1{font-size:clamp(38px,6.5vw,72px);line-height:1.05;font-weight:700}
+  .hero{padding:110px 0 84px;position:relative;text-align:left}
+  .hero h1{font-size:clamp(44px,8vw,88px);line-height:1.08;font-weight:700;letter-spacing:.01em}
   .hero h1 .accent{color:var(--accent)}
-  .hero p.lead{margin-top:24px;max-width:540px;font-size:18px;color:var(--muted);font-weight:300}
-  .hero .actions{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+  .hero p.lead{margin-top:30px;max-width:560px;font-size:18px;color:var(--muted);font-weight:300}
+  .hero p.lead::before{content:"";display:block;width:46px;height:3px;border-radius:2px;background:var(--accent);margin-bottom:20px}
+  .hero .actions{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap}
   .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:999px;font-size:14px;font-weight:500;transition:.2s;cursor:pointer;font-family:inherit}
-  .btn-primary{background:var(--ink);color:#fff}
-  .btn-primary:hover{background:var(--accent)}
+  .btn-primary{background:var(--ink);color:#141210}
+  .btn-primary:hover{background:var(--accent);color:#141210}
   .btn-ghost{border:1px solid var(--line);color:var(--ink)}
-  .btn-ghost:hover{border-color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 
   /* ---------- Section base ---------- */
-  section.block{padding:84px 0}
-  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:44px;flex-wrap:wrap}
-  .sec-head .ttl{display:flex;flex-direction:column;gap:4px}
-  .sec-head .en{font-family:"Space Grotesk","Inter",sans-serif;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  section.block{padding:64px 0;border-top:1px solid var(--line)}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:40px;flex-wrap:wrap;counter-increment:sec}
+  .sec-head .ttl{position:relative;display:flex;flex-direction:column;gap:4px;padding-left:24px}
+  /* 标题左侧竖线：给标题一个依附的视觉锚点 */
+  .sec-head .ttl::before{content:"";position:absolute;left:0;top:.12em;bottom:.1em;width:3px;border-radius:2px;background:var(--accent)}
+  /* 章节序号：把散落板块串成有秩序的阅读流 */
+  .sec-head .ttl::after{content:counter(sec,decimal-leading-zero);position:absolute;left:0;bottom:100%;margin-bottom:10px;font-size:12px;font-weight:600;letter-spacing:.24em;color:var(--accent)}
   .sec-head h2{font-size:clamp(26px,4vw,38px);font-weight:600}
+  /* 标题同行英文小字（辅助说明，非装饰大写标签） */
+  .sec-head h2 .en-inline{
+    font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    font-size:.4em;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted);margin-left:.7em;vertical-align:middle;
+  }
   .sec-head p{color:var(--muted);max-width:380px;font-size:15px}
 
-  /* ---------- About（头像缩小） ---------- */
-  .about-grid{display:grid;grid-template-columns:200px 1fr;gap:44px;align-items:center}
-  .about-photo{width:200px;height:200px;border-radius:24px;overflow:hidden;background:linear-gradient(135deg,#f6d365,#fda085);position:relative;box-shadow:var(--shadow);flex:none}
-  .about-photo::after{content:"头像";position:absolute;left:14px;bottom:12px;color:#fff;font-size:12px;opacity:.85;letter-spacing:.05em}
-  .about-text h3{font-size:24px;margin-bottom:12px}
-  .about-text p{color:var(--muted);margin-bottom:14px;font-weight:300;max-width:560px}
+  /* ---------- About（头像 → 印章徽记） ---------- */
+  .about-grid{display:grid;grid-template-columns:160px 1fr;gap:32px;align-items:start}
+  .about-photo{
+    width:160px;height:160px;border-radius:16px;position:relative;flex:none;
+    background:linear-gradient(160deg,#3a241a,#241712);
+    border:1px solid #4a3426;
+    box-shadow:var(--shadow);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .about-photo .seal{
+    width:104px;height:104px;border-radius:10px;
+    border:2px solid var(--accent);
+    color:var(--accent);
+    display:flex;align-items:center;justify-content:center;
+    font-family:"Noto Serif SC","Songti SC","SimSun",serif;
+    font-size:52px;font-weight:700;line-height:1;
+    letter-spacing:.04em;
+    box-shadow:inset 0 0 0 3px rgba(224,122,63,.12), 0 0 0 4px rgba(224,122,63,.06);
+  }
+  .about-text h3{font-size:22px;margin-bottom:10px}
+  .about-text p{color:var(--muted);margin-bottom:12px;font-weight:300;max-width:560px}
 
   /* ---------- 能力（纯文字） ---------- */
-  .ability-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
-  .ability{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:rgba(255,255,255,.7)}
-  .ability h3{font-size:17px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
-  .ability h3::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  .ability-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .ability{border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:rgba(29,26,23,.6)}
+  .ability h3{position:relative;font-size:17px;margin-bottom:16px;padding-left:18px}
+  .ability h3::before{content:"";position:absolute;left:0;top:7px;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  .ability h3::after{content:"";display:block;width:26px;height:2px;border-radius:2px;background:var(--accent);margin-top:12px}
   .ability p{color:var(--muted);font-weight:300;font-size:15px}
   .ability .tools{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
-  .ability .tools span{font-size:13px;border:1px solid var(--line);padding:6px 12px;border-radius:999px;color:var(--ink);background:rgba(255,255,255,.6)}
+  .ability .tools span{font-size:13px;border:1px solid var(--line);padding:6px 12px;border-radius:999px;color:var(--ink);background:rgba(29,26,23,.5)}
 
   /* ---------- 作品轮播（循环滑动） ---------- */
-  .cat-block{padding:54px 0}
-  .cat-block .sec-head{margin-bottom:26px}
+  .cat-block{padding:40px 0}
+  .cat-block .sec-head{margin-bottom:22px}
   .carousel{position:relative;display:flex;align-items:center;gap:14px}
   .nav-arrow{width:46px;height:46px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--surface);font-size:22px;color:var(--ink);cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;z-index:120}
   .nav-arrow:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-  .viewport{position:relative;height:360px;flex:1;overflow:hidden;touch-action:none;cursor:grab}
+  .viewport{position:relative;height:400px;flex:1;overflow:hidden;touch-action:none;cursor:grab}
   .viewport:active{cursor:grabbing}
   .track{position:absolute;inset:0}
   .card{
-    position:absolute;top:50%;left:50%;width:260px;height:320px;margin:-160px 0 0 -130px;
+    position:absolute;top:50%;left:50%;width:280px;height:350px;margin:-175px 0 0 -140px;
     border-radius:var(--radius);overflow:hidden;cursor:pointer;
     box-shadow:0 22px 46px rgba(28,27,26,.18);
     transition:transform .55s cubic-bezier(.2,.7,.2,1),opacity .55s;
     will-change:transform,opacity;color:#fff;
   }
   .card .cap{position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(transparent,rgba(0,0,0,.6))}
-  .card .cap h4{font-family:"Space Grotesk";font-size:17px;margin-bottom:4px}
+  .card .cap h4{font-family:"Noto Serif SC","Songti SC","SimSun",serif;font-size:17px;margin-bottom:4px}
   .card .cap p{font-size:12.5px;opacity:.85}
-  .card .center-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:"Space Grotesk";font-weight:600;font-size:15px;text-shadow:0 1px 10px rgba(0,0,0,.35);padding:0 24px;text-align:center}
+  .card .noimg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .card .noimg::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 50% 38%, rgba(224,122,63,.16), transparent 62%),
+      radial-gradient(circle at 82% 86%, rgba(224,122,63,.08), transparent 55%);
+  }
+  .card .noimg::after{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(244,241,236,.04) 1px, transparent 1px);
+    background-size:22px 22px;opacity:.5;
+  }
+  .card .noimg-char{
+    position:relative;z-index:1;
+    font-family:"Noto Serif SC","Songti SC","SimSun",serif;
+    font-size:92px;font-weight:700;line-height:1;
+    color:rgba(244,241,236,.12);
+    letter-spacing:.02em;text-shadow:0 4px 26px rgba(0,0,0,.3);
+  }
   .card .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
   .card .play svg{width:52px;height:52px;filter:drop-shadow(0 2px 10px rgba(0,0,0,.4))}
   .card-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:rgba(0,0,0,.06);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
@@ -169,13 +217,13 @@
   .lb-video{width:100%;height:100%;object-fit:contain;background:#000;border-radius:18px;display:block}
   .vp{position:absolute;inset:0}
   .vp-big{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:3}
-  .vp-big button{width:84px;height:84px;border-radius:50%;border:none;background:rgba(226,85,61,.92);color:#fff;font-size:32px;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:transform .2s;display:flex;align-items:center;justify-content:center}
+  .vp-big button{width:84px;height:84px;border-radius:50%;border:none;background:rgba(224,122,63,.92);color:#141210;font-size:32px;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:transform .2s;display:flex;align-items:center;justify-content:center}
   .vp-big button:hover{transform:scale(1.08)}
   .vp-big.hidden{opacity:0;pointer-events:none;transition:opacity .25s}
   .vp-bar{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;display:flex;align-items:center;gap:12px;background:linear-gradient(transparent,rgba(0,0,0,.72));border-radius:0 0 18px 18px;z-index:4;opacity:0;transform:translateY(8px);transition:opacity .25s,transform .25s}
   .vp:hover .vp-bar,.vp.show-bar .vp-bar{opacity:1;transform:none}
   .vp-bar .vp-play{width:38px;height:38px;flex:none;border-radius:50%;border:none;background:#fff;color:var(--ink);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-  .vp-bar .vp-time,.vp-bar .vp-dur{font-family:"Space Grotesk";font-size:12.5px;color:#fff;min-width:42px;text-align:center}
+  .vp-bar .vp-time,.vp-bar .vp-dur{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-variant-numeric:tabular-nums;font-size:12.5px;color:#fff;min-width:42px;text-align:center}
   .vp-track{position:relative;flex:1;height:18px;display:flex;align-items:center;cursor:pointer;touch-action:none}
   .vp-track .vp-rail{position:absolute;left:0;right:0;height:6px;border-radius:999px;background:rgba(255,255,255,.25)}
   .vp-track .vp-buf{position:absolute;left:0;height:6px;border-radius:999px;background:rgba(255,255,255,.35);width:0}
@@ -188,7 +236,7 @@
   .dots i.on{background:var(--accent);width:20px;border-radius:999px}
 
   /* ---------- Contact ---------- */
-  .contact-box{background:var(--ink);color:#fff;border-radius:22px;padding:56px 48px}
+  .contact-box{background:var(--surface);color:#fff;border-radius:20px;padding:56px 48px;border:1px solid var(--line)}
   .contact-box h2{font-size:clamp(24px,4vw,36px);font-weight:600;margin-bottom:12px}
   .contact-box > p{color:rgba(255,255,255,.7);max-width:440px;font-weight:300;margin-bottom:30px}
 
@@ -202,6 +250,7 @@
     transition:transform .25s,background .25s,border-color .25s;
     -webkit-tap-highlight-color:transparent;
   }
+  .c-icon svg{width:22px;height:22px}
   .c-icon:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-3px)}
   .c-icon.open{background:var(--accent);border-color:var(--accent)}
   .c-icon.bump{animation:bump .42s ease}
@@ -216,7 +265,7 @@
   .c-item.open .c-pop{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0) scale(1)}
   .c-pop::before{content:"";position:absolute;top:-6px;left:50%;transform:translateX(-50%) rotate(45deg);width:12px;height:12px;background:#fff;border-radius:2px}
   .c-pop .c-label{display:block;font-size:11px;color:var(--muted);letter-spacing:.1em;margin-bottom:4px}
-  .c-pop .c-value{font-family:"Space Grotesk";font-size:15px;font-weight:600;word-break:break-all;display:block}
+  .c-pop .c-value{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:15px;font-weight:600;word-break:break-all;display:block}
   .c-pop .c-copy{margin-top:10px;font-size:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:5px 16px;cursor:pointer;transition:.2s;font-family:inherit}
   .c-pop .c-copy:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
   .c-pop .c-copy.done{background:var(--accent);color:#fff;border-color:var(--accent)}
@@ -229,54 +278,27 @@
   .lb-panel{position:relative;width:min(820px,92vw);transform:scale(.94);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
   .lightbox.show .lb-panel{transform:scale(1)}
   .lb-stage{width:100%;height:min(60vh,520px);border-radius:18px;box-shadow:0 30px 70px rgba(0,0,0,.45);position:relative;overflow:hidden}
-  .lb-stage .lb-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:"Space Grotesk";font-weight:600;font-size:clamp(18px,3vw,30px);color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.4);padding:0 32px;text-align:center}
+  .lb-stage .lb-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:"Noto Serif SC","Songti SC","SimSun",serif;font-weight:600;font-size:clamp(18px,3vw,30px);color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.4);padding:0 32px;text-align:center}
   .lb-stage .lb-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
   .lb-stage .lb-detail{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:0 36px;text-align:center;color:#fff}
-  .lb-detail .lb-detail-en{font-family:"Space Grotesk";letter-spacing:.32em;text-transform:uppercase;font-size:13px;opacity:.85}
-  .lb-detail h2{font-family:"Space Grotesk";font-weight:600;font-size:clamp(26px,4.4vw,46px);line-height:1.15;text-shadow:0 2px 18px rgba(0,0,0,.35);margin:0}
+  .lb-detail h2{font-family:"Noto Serif SC","Songti SC","SimSun",serif;font-weight:600;font-size:clamp(26px,4.4vw,46px);line-height:1.15;text-shadow:0 2px 18px rgba(0,0,0,.35);margin:0}
   .lb-detail p{font-weight:300;font-size:clamp(14px,1.6vw,17px);color:rgba(255,255,255,.85);max-width:560px;margin:0}
   .lb-close{position:absolute;top:-14px;right:-14px;width:42px;height:42px;border-radius:50%;border:none;background:#fff;color:var(--ink);font-size:24px;line-height:1;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.3);z-index:2;display:flex;align-items:center;justify-content:center;transition:transform .2s}
   .lb-close:hover{transform:rotate(90deg)}
   .lb-meta{margin-top:18px;color:#fff;text-align:center}
-  .lb-meta h3{font-family:"Space Grotesk";font-size:22px;margin-bottom:6px}
+  .lb-meta h3{font-family:"Noto Serif SC","Songti SC","SimSun",serif;font-size:22px;margin-bottom:6px}
   .lb-meta p{color:rgba(255,255,255,.75);font-weight:300;font-size:15px}
 
   footer{padding:38px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
-  /* ---------- 标题艺术装饰：纹样 / 点线 / 文案水印 ---------- */
-  .sec-head .ttl{position:relative;padding-left:48px}
-  /* 左侧珊瑚红「环 + 点」纹样标记 */
-  .sec-head .ttl::after{
-    content:"";position:absolute;left:0;top:5px;width:30px;height:30px;border-radius:50%;
-    border:1.5px solid var(--accent);
-    background:radial-gradient(circle at 50% 50%, var(--accent) 0 3px, transparent 3.6px);
-  }
-  /* 主板块标题后方：超大极淡英文水印（文案作纹样） */
-  .sec-head .ttl[data-wm]::before{
-    content:attr(data-wm);
-    position:absolute;left:46px;top:0;
-    font-family:"Space Grotesk";font-weight:700;font-size:66px;line-height:1;
-    color:var(--ink);opacity:.05;letter-spacing:-.03em;
-    z-index:-1;pointer-events:none;white-space:nowrap;
-  }
-  .cat-block .sec-head .ttl[data-wm]::before{font-size:44px;top:-4px}
-
   /* ---------- 首屏艺术纹样（环 + 虚线环 + 散点，缓慢旋转） ---------- */
   .hero{position:relative}
-  .hero-deco{position:absolute;top:18px;right:0;width:250px;height:250px;pointer-events:none;z-index:-1}
-  .hero-deco .ring{position:absolute;inset:0;border:1.5px solid var(--accent);border-radius:50%;opacity:.20;animation:spin 40s linear infinite}
-  .hero-deco .ring2{position:absolute;inset:42px;border:1px dashed rgba(226,85,61,.45);border-radius:50%;animation:spinr 30s linear infinite}
-  .hero-deco .dot{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--accent);opacity:.7}
   @keyframes spin{to{transform:rotate(360deg)}}
   @keyframes spinr{to{transform:rotate(-360deg)}}
 
-  /* 首屏大标题中英混排重新排版 */
-  .hero h1{display:flex;flex-direction:column;gap:8px;margin-top:4px}
-  .hero h1 .h1-cn{font-size:clamp(38px,6.5vw,72px);line-height:1.06;font-weight:700}
-  .hero h1 .en-word{
-    font-family:"Space Grotesk";font-style:italic;font-weight:600;
-    color:var(--accent);font-size:.5em;letter-spacing:.01em;margin-left:.28em;
-  }
+  /* 首屏大标题排版 */
+  .hero h1{display:flex;flex-direction:column;gap:12px;margin-top:4px}
+  .hero h1 .h1-cn{font-size:clamp(44px,8vw,88px);line-height:1.08;font-weight:700;letter-spacing:.01em}
 
   /* ---------- Responsive ---------- */
   @media(max-width:880px){
@@ -286,16 +308,14 @@
     .about-grid{grid-template-columns:1fr;gap:24px}
     .about-photo{width:140px;height:140px}
     .ability-grid{grid-template-columns:1fr}
-    .hero-deco{width:170px;height:170px;opacity:.5;top:6px}
     .contact-box{padding:40px 22px}
   }
   @media(max-width:520px){
     .nav-arrow{width:40px;height:40px}
-    .viewport{height:320px}
-    .card{width:220px;height:280px;margin:-140px 0 0 -110px}
+    .viewport{height:340px}
+    .card{width:230px;height:290px;margin:-145px 0 0 -115px}
     .contact-icons{gap:16px}
     .c-icon{width:52px;height:52px;font-size:21px}
-    .hero-deco{display:none}
   }
 </style>
 </head>
@@ -315,7 +335,7 @@
       <a href="#ability">能力</a>
       <a href="#works">作品</a>
       <a href="#contact">联系</a>
-      <a href="#contact" class="nav-cta">合作邀约</a>
+      <a href="#contact" class="nav-cta">找我合作</a>
     </nav>
     <div class="burger" id="burger"><span></span><span></span><span></span></div>
   </div>
@@ -323,19 +343,11 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero wrap" id="top">
-  <div class="hero-deco" aria-hidden="true">
-    <span class="ring"></span><span class="ring2"></span>
-    <span class="dot" style="top:6%;left:62%"></span>
-    <span class="dot" style="top:76%;left:14%"></span>
-    <span class="dot" style="top:42%;left:92%"></span>
-    <span class="dot" style="top:88%;left:68%"></span>
-  </div>
-  <span class="eyebrow">XU JIAN — AI VISUAL CREATOR</span>
   <h1>
     <span class="h1-cn">我是徐剑，</span>
-    <span class="h1-cn">用 AI 把<span class="accent">创意</span>变成<span class="en-word">Frames</span></span>
+    <span class="h1-cn">AI 漫剧与真人剧<span class="accent">创作者</span></span>
   </h1>
-  <p class="lead">专注 AI 漫剧与精品 AI 真人短剧的全流程制作——从剧本分镜、资产生成，到视频合成与剪辑，一站式落地。</p>
+  <p class="lead">用即梦、可灵、MJ 做分镜、生资产、合成剪辑，把一段剧本做成能上线的片。</p>
   <div class="actions">
     <a href="#works" class="btn btn-primary">查看作品 →</a>
     <a href="#contact" class="btn btn-ghost">联系我</a>
@@ -345,17 +357,16 @@
 <!-- ===== ABOUT（头像缩小，无数据栏） ===== -->
 <section class="block wrap" id="about">
   <div class="sec-head">
-    <div class="ttl" data-wm="ABOUT">
-      <span class="en">About Me</span>
-      <h2>关于我</h2>
+    <div class="ttl">
+      <h2>关于我<span class="en-inline">About</span></h2>
     </div>
   </div>
   <div class="about-grid">
-    <div class="about-photo"></div>
+    <div class="about-photo"><span class="seal">徐</span></div>
     <div class="about-text">
-      <h3>你好，我是徐剑</h3>
-      <p>一名 AI 视觉创作者，擅长用即梦、可灵、MJ 等主流工具，完成从创意到成品的全链路制作。喜欢把脑海里的画面，一步步落地成可以被看见的作品。</p>
-      <p>既能独立推进项目，也善于在团队里沟通协作——让好想法真正长出来。</p>
+      <h3>徐剑</h3>
+      <p>做 AI 视觉，主攻漫剧和精品真人短剧。从剧本、分镜脚本，到角色和场景资产、视频生成、剪辑，一条龙能自己跑完。</p>
+      <p>工具主要用即梦、可灵、MJ，配合 Blender、PS、AE 做精修和合成。</p>
     </div>
   </div>
 </section>
@@ -363,20 +374,19 @@
 <!-- ===== 能力（纯文字） ===== -->
 <section class="block wrap" id="ability">
   <div class="sec-head">
-    <div class="ttl" data-wm="SKILLS">
-      <span class="en">Capabilities</span>
-      <h2>能力</h2>
+    <div class="ttl">
+      <h2>能力<span class="en-inline">Skills</span></h2>
     </div>
-    <p>从工具到流程，覆盖 AI 视觉创作的完整链路。</p>
+    <p>能独立跑完一条片，也能在团队里接住某个环节。</p>
   </div>
   <div class="ability-grid">
     <div class="ability">
-      <h3>个人优势</h3>
-      <p>熟练掌握多种主流 AI 工具，包括即梦、可灵、Lovart、MJ、NANO、libtv 等，学习能力强；具备 AI 漫剧及精品 AI 真人短剧的全流程制作能力，能够根据剧本制作分镜脚本、资产、视频生成、剪辑等，高效完成从创意构思到成品输出的各个环节，具备较强的 AI 内容创作与项目执行能力，且善于与人沟通。</p>
+      <h3>AI 工具</h3>
+      <p>即梦、可灵、Lovart、MJ、NANO、libtv——从文生图、图生视频到角色一致性，按需求选工具。能根据剧本写分镜脚本，把创意拆成可执行的资产和镜头。</p>
     </div>
     <div class="ability">
-      <h3>专业技能</h3>
-      <p>熟练掌握 Blender、Photoshop、After Effects、Animate、剪映等专业工具，覆盖建模、平面、动态与剪辑等环节。</p>
+      <h3>传统工具</h3>
+      <p>Blender 建模、Photoshop 精修、After Effects 动效、Animate 与剪映剪辑，补上 AI 生成之后的收尾。</p>
       <div class="tools">
         <span>Blender</span><span>Photoshop</span><span>After Effects</span><span>Animate</span><span>剪映</span>
       </div>
@@ -387,11 +397,10 @@
 <!-- ===== 作品（分类循环轮播） ===== -->
 <section class="block wrap" id="works">
   <div class="sec-head reveal">
-    <div class="ttl" data-wm="WORKS">
-      <span class="en">Selected Works</span>
-      <h2>作品集</h2>
+    <div class="ttl">
+      <h2>作品集<span class="en-inline">Works</span></h2>
     </div>
-    <p>按住拖拽自由滑动 · 甩动可循环旋转 · 点击两侧卡片跳转。</p>
+    <p>左右拖动浏览，点击卡片放大观看。</p>
   </div>
   <div id="worksRoot"></div>
 </section>
@@ -400,12 +409,11 @@
 <section class="block wrap" id="contact">
   <div class="contact-box reveal">
     <div class="sec-head" style="margin-bottom:18px">
-      <div class="ttl" data-wm="CONTACT">
-        <span class="en" style="color:rgba(255,255,255,.55)">Get In Touch</span>
-        <h2>联系</h2>
+      <div class="ttl">
+        <h2>联系<span class="en-inline">Contact</span></h2>
       </div>
     </div>
-    <p>无论是 AI 漫剧、精品 AI 真人短剧，还是单独的视觉资产需求，都欢迎随时联系我。</p>
+    <p>有漫剧、真人短剧，或单独的视觉资产需求，直接找我聊。</p>
     <div class="contact-icons" id="contactIcons"></div>
     <p class="contact-hint">点击图标查看联系方式 · 再次点击收起</p>
   </div>
@@ -413,11 +421,11 @@
 
 <footer class="wrap">
   <span>© 2026 徐剑 · AI 视觉创作</span>
-  <span>🌐 www.XUJIANzpj.com · 示例占位内容，请替换为你的真实作品</span>
+  <span>www.XUJIANzpj.com</span>
 </footer>
 
 <script>
-  // ---------- 作品数据（示例，替换成你的真实作品） ----------
+  // ---------- 作品数据 ----------
   const categories = [
     {key:"video",     name:"视频作品", en:"Video"},
     {key:"poster",    name:"海报设计", en:"Poster"},
@@ -425,19 +433,12 @@
     {key:"scene",     name:"场景设计", en:"Scene"},
     {key:"aigc",      name:"AIGC 视觉", en:"AIGC"},
   ];
+  const catChar = k => ({video:"剧", poster:"图", character:"角", scene:"景", aigc:"创"})[k] || "作";
   const grads = [
-    "linear-gradient(135deg,#5ee7df,#b490ca)",
-    "linear-gradient(135deg,#f093fb,#f5576c)",
-    "linear-gradient(135deg,#30cfd0,#330867)",
-    "linear-gradient(135deg,#f6d365,#fda085)",
-    "linear-gradient(135deg,#fa709a,#fee140)",
-    "linear-gradient(135deg,#ff9a9e,#fecfef)",
-    "linear-gradient(135deg,#a18cd1,#fbc2eb)",
-    "linear-gradient(135deg,#84fab0,#8fd3f4)",
-    "linear-gradient(135deg,#667eea,#764ba2)",
-    "linear-gradient(135deg,#4facfe,#00f2fe)",
-    "linear-gradient(135deg,#43e97b,#38f9d7)",
-    "linear-gradient(135deg,#ff6a88,#ff99ac)",
+    "linear-gradient(135deg,#2a2017,#1d1a17)",
+    "linear-gradient(135deg,#1e2a33,#141210)",
+    "linear-gradient(135deg,#2a2030,#1a1715)",
+    "linear-gradient(135deg,#20302a,#141210)",
   ];
   const works = [
     {cat:"video",title:"2D 中式恐怖漫剧 · 守棺人 EP09",desc:"2D 中式恐怖风格 AI 漫剧",src:"videos/v_2d_ep09.mp4"},
@@ -452,25 +453,25 @@
     {cat:"video",title:"迪士尼皮克斯风格课程 · 整除特性",desc:"教育课程视频",src:"videos/v_disney_div.mp4"},
     {cat:"video",title:"迪士尼皮克斯风格课程 · 乘法原理",desc:"教育课程视频",src:"videos/v_disney_mul.mp4"},
 
-    {cat:"poster",title:"AI 漫剧主视觉",desc:"系列海报 / 主视觉"},
-    {cat:"poster",title:"剧集定档海报",desc:"字体与版式设计"},
-    {cat:"poster",title:"角色宣传图",desc:"立绘风 / 平面物料"},
-    {cat:"poster",title:"活动主视觉",desc:"KV 设计"},
+    {cat:"poster",title:"AI 漫剧主视觉",desc:"一部漫剧的系列主视觉"},
+    {cat:"poster",title:"剧集定档海报",desc:"定档海报，字体与版式"},
+    {cat:"poster",title:"角色宣传图",desc:"角色立绘与平面物料"},
+    {cat:"poster",title:"活动主视觉",desc:"KV 主视觉设计"},
 
-    {cat:"character",title:"漫画女主设定",desc:"三视图 / 设定稿"},
-    {cat:"character",title:"AI 真人角色",desc:"写实质感 / 概念"},
-    {cat:"character",title:"反派角色设定",desc:"概念稿 / 草图"},
-    {cat:"character",title:"Q 版角色",desc:"表情包 / 衍生"},
+    {cat:"character",title:"漫画女主设定",desc:"女主三视图与设定稿"},
+    {cat:"character",title:"AI 真人角色",desc:"写实真人角色概念"},
+    {cat:"character",title:"反派角色设定",desc:"反派概念与草图"},
+    {cat:"character",title:"Q 版角色",desc:"Q 版与表情衍生"},
 
-    {cat:"scene",title:"漫画都市夜景",desc:"概念场景 / 光影"},
-    {cat:"scene",title:"古风小镇",desc:"氛围稿 / 色彩"},
-    {cat:"scene",title:"未来空间站",desc:"概念场景"},
-    {cat:"scene",title:"奇幻森林",desc:"色彩稿"},
+    {cat:"scene",title:"漫画都市夜景",desc:"都市夜景，光影概念"},
+    {cat:"scene",title:"古风小镇",desc:"古风小镇氛围稿"},
+    {cat:"scene",title:"未来空间站",desc:"未来空间站概念"},
+    {cat:"scene",title:"奇幻森林",desc:"奇幻森林色彩稿"},
 
-    {cat:"aigc",title:"梦境系列 No.1",desc:"MJ 生成 + 精修"},
+    {cat:"aigc",title:"梦境系列 No.1",desc:"MJ 生成后精修"},
     {cat:"aigc",title:"未来植物志",desc:"SD 合成"},
-    {cat:"aigc",title:"抽象色彩实验",desc:"工作流探索"},
-    {cat:"aigc",title:"风格迁移练习",desc:"AIGC 视觉实验"},
+    {cat:"aigc",title:"抽象色彩实验",desc:"色彩工作流探索"},
+    {cat:"aigc",title:"风格迁移练习",desc:"AIGC 风格迁移实验"},
   ];
 
   const playIcon = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>';
@@ -525,7 +526,7 @@
     } else {
       lbStage.style.background = data.bg;
       if(!lbStage.contains(lbCenter)) lbStage.appendChild(lbCenter);
-      lbCenter.innerHTML = `<div class="lb-detail"><span class="lb-detail-en">${data.en||""}</span><h2>${data.title}</h2><p>${data.desc}</p></div>`;
+      lbCenter.innerHTML = `<div class="lb-detail"><h2>${data.title}</h2><p>${data.desc}</p></div>`;
     }
     lbTitle.textContent = data.title;
     lbDesc.textContent = data.desc;
@@ -632,7 +633,7 @@
     section.className = "cat-block reveal";
     section.innerHTML = `
       <div class="sec-head">
-        <div class="ttl" data-wm="${cat.en.toUpperCase()}"><span class="en">${cat.en}</span><h2>${cat.name}</h2></div>
+        <div class="ttl"><h2>${cat.name}</h2></div>
       </div>
       <div class="carousel">
         <button class="nav-arrow prev" aria-label="上一个">‹</button>
@@ -657,7 +658,7 @@
         ? `<img class="card-cover" src="${coverFor(w.src)}" alt="${w.title}" loading="lazy"><div class="play">${playIcon}</div>`
         : (w.img
             ? `<img class="card-cover" src="${w.img}" alt="${w.title}" loading="lazy"><div class="play">${zoomIcon}</div>`
-            : `<div class="center-label">${w.title}</div>`);
+            : `<div class="noimg"><span class="noimg-char">${catChar(cat.key)}</span></div>`);
       c.innerHTML = inner + `<div class="cap"><h4>${w.title}</h4><p>${w.desc}</p></div>`;
       track.appendChild(c);
       return c;
@@ -779,11 +780,17 @@
   });
 
   // ---------- 动态联系方式图标 ----------
+  const ICONS = {
+    phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+    mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>',
+    wechat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 3C5 3 2 5.6 2 8.7c0 1.8.9 3.4 2.3 4.5L3.7 16l3-1.4c.6.2 1.2.2 1.8.2"/><path d="M15.5 8c2.8 0 5 2 5 4.4 0 1.5-.8 2.9-2 3.8l-.5 2.3-2.4-1.2c-.4.1-.7.1-1.1.1"/><path d="M9.5 7.5h.01M12.5 7.5h.01M9.5 10.5h.01M12.5 10.5h.01"/></svg>',
+    qq: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="7"/><path d="M7 13.5c-1.5 1.2-2.5 3-2.5 5 0 .8.7 1.5 1.5 1.5h12c.8 0 1.5-.7 1.5-1.5 0-2-1-3.8-2.5-5"/><path d="M8.5 12.5c0 1 .4 1.8 1 2.2M15.5 12.5c0 1-.4 1.8-1 2.2"/></svg>'
+  };
   const contacts = [
-    {type:"电话", value:"18226682231",       icon:"☎️", href:"tel:18226682231"},
-    {type:"邮箱", value:"3389538354@qq.com", icon:"✉️", href:"mailto:3389538354@qq.com"},
-    {type:"微信", value:"Reverie_314",       icon:"💬"},
-    {type:"QQ",   value:"3389538354",        icon:"🐧"},
+    {type:"电话", value:"18226682231",       icon:ICONS.phone, href:"tel:18226682231"},
+    {type:"邮箱", value:"3389538354@qq.com", icon:ICONS.mail,  href:"mailto:3389538354@qq.com"},
+    {type:"微信", value:"Reverie_314",       icon:ICONS.wechat},
+    {type:"QQ",   value:"3389538354",        icon:ICONS.qq},
   ];
   const iconWrap = document.getElementById("contactIcons");
   function copyText(t){
